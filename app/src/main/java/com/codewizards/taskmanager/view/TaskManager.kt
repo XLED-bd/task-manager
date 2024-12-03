@@ -61,7 +61,7 @@ fun TaskList(taskViewModel: TaskViewModel, onClickDetail: (Int) -> Unit ) {
 
     LazyColumn {
         items(tasks){ task ->
-            TaskItem(task, onDetail = {taskId -> onClickDetail(taskId) })
+            TaskItem(task, onDetail = {taskId -> onClickDetail(taskId)})
         }
     }
 }

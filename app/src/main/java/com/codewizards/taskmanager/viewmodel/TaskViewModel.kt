@@ -2,6 +2,7 @@ package com.codewizards.taskmanager.viewmodel
 
 import androidx.compose.runtime.mutableStateListOf
 import androidx.lifecycle.ViewModel
+import androidx.room.util.copy
 import com.codewizards.taskmanager.model.Task
 
 class TaskViewModel: ViewModel() {
@@ -11,4 +12,9 @@ class TaskViewModel: ViewModel() {
     fun addTask(title:String, descript:String){
         _tasks.add(Task(_tasks.size, title,descript,false))
     }
+
+    fun completeTask(id: Int){
+        _tasks[id] = _tasks[id].copy(isComplete = !_tasks[id].isComplete)
+    }
+
 }

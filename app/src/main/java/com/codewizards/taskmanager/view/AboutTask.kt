@@ -1,6 +1,7 @@
 package com.codewizards.taskmanager.view
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
@@ -14,15 +15,15 @@ import com.codewizards.taskmanager.model.Task
 import com.codewizards.taskmanager.viewmodel.TaskViewModel
 
 @Composable
-fun AboutTask(int: Int, taskViewModel: TaskViewModel) {
-    val task = taskViewModel.tasks[int]
+fun AboutTask(id: Int, taskViewModel: TaskViewModel) {
+    val task = taskViewModel.tasks[id]
 
-    Text(task.name)
+    AboutTaskDescr(task, onComleteChange = { taskViewModel.completeTask(id) })
 }
 
 @Composable
-fun AboutTaskDescr( task:Task, onComleteChange: (Boolean)->Unit){
-    Column {
+fun AboutTaskDescr(task:Task, onComleteChange: (Boolean)->Unit){
+    Column(Modifier.fillMaxSize()) {
         Text(text = task.name,
             modifier = Modifier.padding(vertical = 10.dp).padding(start = 5.dp),
             fontSize = 20.sp)
@@ -31,15 +32,18 @@ fun AboutTaskDescr( task:Task, onComleteChange: (Boolean)->Unit){
             modifier = Modifier.padding(vertical = 10.dp).padding(start = 5.dp),
             fontSize = 20.sp)
 
+        Text(text =  if (task.isComplete) "Выполнено" else "Не выполнено",
+            modifier = Modifier.padding(vertical = 10.dp).padding(start = 5.dp),
+            fontSize = 20.sp)
+
         Button(
             modifier = Modifier.padding(vertical = 10.dp).padding(end=5.dp).align(Alignment.End),
             onClick = {
                 onComleteChange(task.isComplete)
-                isComplete = true
-
+                // isComplete = true
             })
         {
-            Text(text = "Выполнено")
+            Text(text = if (task.isComplete) "Выполнено" else "Не выполнено")
         }
     }
 }
@@ -49,8 +53,9 @@ fun AboutTaskDescr( task:Task, onComleteChange: (Boolean)->Unit){
 @Preview(showBackground = true)
 @Composable
 fun GreetPreview() {
+    val taskViewModel = TaskViewModel()
 
-    val aboutTask = AboutTask(0, taskViewModel = TaskViewModel())
+    taskViewModel.addTask("1414", "1234124")
 
-
+     AboutTask(0, taskViewModel = taskViewModel)
 }
