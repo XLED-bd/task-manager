@@ -21,7 +21,7 @@ class MainActivity : ComponentActivity() {
             TaskmanagerTheme {
                 Scaffold( modifier = Modifier.fillMaxSize() ) { innerPadding ->
                     Greeting(
-                        name = "Android+kotlin",
+                        name = "Agetgrgt",
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
