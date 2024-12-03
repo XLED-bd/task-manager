@@ -1,5 +1,6 @@
 package com.codewizards.taskmanager.view
 
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -18,6 +19,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -51,9 +53,14 @@ fun TaskItem(task: Task) {
     Card (
         Modifier.fillMaxWidth(). padding(horizontal = 20.dp, vertical = 7.dp))
     {
-        Text(text = task.name,
-            modifier = Modifier.padding(vertical = 10.dp).padding(start = 5.dp),
-            fontSize = 20.sp)
+        Box (Modifier.fillMaxWidth()) {
+            Text(text = task.name,
+                modifier = Modifier.padding(vertical = 10.dp).padding(start = 5.dp),
+                fontSize = 20.sp)
+            Button(modifier = Modifier.align(Alignment.CenterEnd), onClick = {}){
+
+            }
+        }
     }
 }
 
