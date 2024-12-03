@@ -9,7 +9,6 @@ class TaskViewModel: ViewModel() {
     val tasks: List<Task> = _tasks
 
     fun addTask(title:String, descript:String){
-        _tasks.add(Task(title,descript,false))
+        _tasks.add(Task(_tasks.size, title,descript,false))
     }
-
 }
