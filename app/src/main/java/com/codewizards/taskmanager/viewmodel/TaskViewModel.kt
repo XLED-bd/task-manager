@@ -9,7 +9,10 @@ class TaskViewModel: ViewModel() {
     private val _tasks = mutableStateListOf<Task>()
     val task: List<Task> = _tasks
 
+fun AddTask(title:String,descript:String){
+    _tasks.add(Task(title,descript,false))
 
+}
 
 
 }
