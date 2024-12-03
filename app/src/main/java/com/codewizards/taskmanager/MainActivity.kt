@@ -32,15 +32,7 @@ class MainActivity : ComponentActivity() {
 
                     TaskManager(taskViewModel, modifier = Modifier.padding(innerPadding))
                 }
-
             }
         }
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    TaskmanagerTheme {
     }
 }

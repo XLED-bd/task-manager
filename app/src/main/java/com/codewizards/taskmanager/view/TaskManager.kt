@@ -21,6 +21,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.codewizards.taskmanager.model.Task
@@ -57,17 +58,21 @@ fun TaskItem(task: Task) {
             Text(text = task.name,
                 modifier = Modifier.padding(vertical = 10.dp).padding(start = 5.dp),
                 fontSize = 20.sp)
-            Button(
-                modifier = Modifier.align(Alignment.CenterEnd)
-                                    .padding(end = 90.dp)
-                                    .padding(vertical = 10.dp)
-                , onClick = {}){
-                Text(text = "text1")
+            Column (modifier = Modifier.align(Alignment.CenterEnd)) {
+                Button(
+                modifier = Modifier.padding(vertical = 10.dp).padding(end=5.dp),
+                onClick = { })
+                {
+                    Text(text = "Подробности")
+                }
+                Button(
+                    modifier = Modifier.padding(vertical = 10.dp).padding(end=5.dp).align(Alignment.End),
+                    onClick = { })
+                {
+                    Text(text = "Удалить")
+                }
             }
-            Button(
-                modifier = Modifier.align(Alignment.CenterEnd), onClick = {}){
-                Text(text = "text2")
-            }
+
         }
     }
 }
@@ -101,4 +106,14 @@ fun TextFieldTask(onAddTask: (String, String) -> Unit){
             Text(text = "Добавить")
         }
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun GreetingPreview() {
+    val taskViewModel = TaskViewModel()
+
+    taskViewModel.addTask("234234", "141243")
+
+    TaskManager(taskViewModel, Modifier.padding(0.dp))
 }
