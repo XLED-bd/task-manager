@@ -57,8 +57,16 @@ fun TaskItem(task: Task) {
             Text(text = task.name,
                 modifier = Modifier.padding(vertical = 10.dp).padding(start = 5.dp),
                 fontSize = 20.sp)
-            Button(modifier = Modifier.align(Alignment.CenterEnd), onClick = {}){
-
+            Button(
+                modifier = Modifier.align(Alignment.CenterEnd)
+                                    .padding(end = 90.dp)
+                                    .padding(vertical = 10.dp)
+                , onClick = {}){
+                Text(text = "text1")
+            }
+            Button(
+                modifier = Modifier.align(Alignment.CenterEnd), onClick = {}){
+                Text(text = "text2")
             }
         }
     }
