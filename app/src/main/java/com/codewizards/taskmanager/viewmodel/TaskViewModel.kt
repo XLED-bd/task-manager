@@ -2,7 +2,6 @@ package com.codewizards.taskmanager.viewmodel
 
 import androidx.compose.runtime.mutableStateListOf
 import androidx.lifecycle.ViewModel
-import androidx.room.util.copy
 import com.codewizards.taskmanager.model.Task
 
 class TaskViewModel: ViewModel() {
