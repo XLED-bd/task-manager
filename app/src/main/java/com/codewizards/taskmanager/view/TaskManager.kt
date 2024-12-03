@@ -128,9 +128,11 @@ fun TextFieldTask(onAddTask: (String, String) -> Unit){
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
+
     val taskViewModel = TaskViewModel()
 
     taskViewModel.addTask("234234", "141243")
 
     TaskManager(taskViewModel, Modifier.padding(0.dp))
+
 }
