@@ -46,7 +46,10 @@ fun TaskManager(taskViewModel: TaskViewModel,  modifier: Modifier){
                     taskId ->
                     navController.navigate("task_detail/$taskId")
                 },
-                    /*   */ )
+                  onDelete = {
+                      taskId ->
+                      taskViewModel.deleteTask(taskId)
+                  }  /*   */ )
             }
         }
         composable("task_detail/{id}",
@@ -58,19 +61,19 @@ fun TaskManager(taskViewModel: TaskViewModel,  modifier: Modifier){
 }
 
 @Composable
-fun TaskList(taskViewModel: TaskViewModel, onClickDetail: (Int) -> Unit, /*   */) {
+fun TaskList(taskViewModel: TaskViewModel, onClickDetail: (Int) -> Unit,onDelete:(Int) -> Unit /*   */) {
     val tasks = taskViewModel.tasks
 
     LazyColumn {
         items(tasks){ task ->
             TaskItem(task, onDetail = {taskId -> onClickDetail(taskId)},
-                onDelete = { /*   */ })
+                onDelete = {taskId -> onDelete(taskId)/*   */ })
         }
     }
 }
 
 @Composable
-fun TaskItem(task: Task, onDetail: (Int) -> Unit, /*   */) {
+fun TaskItem(task: Task, onDetail: (Int) -> Unit, onDelete:(Int) -> Unit /*   */) {
     Card (
         Modifier.fillMaxWidth(). padding(horizontal = 20.dp, vertical = 7.dp))
     {
@@ -88,7 +91,7 @@ fun TaskItem(task: Task, onDetail: (Int) -> Unit, /*   */) {
                 Button(
                     modifier = Modifier.padding(vertical = 10.dp).padding(end=5.dp).align(Alignment.End),
                     onClick = {
-                        onDeleteTask(task.id)
+                        onDelete(task.id)
                     })
                 {
                     Text(text = "Удалить")
