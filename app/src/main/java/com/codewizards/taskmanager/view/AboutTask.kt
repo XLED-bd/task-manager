@@ -1,8 +1,10 @@
 package com.codewizards.taskmanager.view
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
@@ -24,7 +26,7 @@ import com.codewizards.taskmanager.viewmodel.TaskViewModel
 @Composable
 fun AboutTask(id: Int, taskViewModel: TaskViewModel) {
     val task = taskViewModel.tasks[id]
-
+    Spacer(modifier = Modifier.height(8.dp))
     AboutTaskDescr(task, onComleteChange = { taskViewModel.completeTask(id) })
 }
 
