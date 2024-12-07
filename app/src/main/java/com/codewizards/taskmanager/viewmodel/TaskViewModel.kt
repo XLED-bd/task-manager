@@ -15,4 +15,8 @@ class TaskViewModel: ViewModel() {
         _tasks[id] = _tasks[id].copy(isComplete = !_tasks[id].isComplete)
     }
 
+    fun changeTaskDescrip(id: Int, description: String){
+        _tasks[id] = _tasks[id].copy(description = description)
+    }
+
 }
