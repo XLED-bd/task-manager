@@ -26,12 +26,15 @@ import com.codewizards.taskmanager.viewmodel.TaskViewModel
 @Composable
 fun AboutTask(id: Int, taskViewModel: TaskViewModel) {
     val task = taskViewModel.tasks[id]
-    Spacer(modifier = Modifier.height(8.dp))
-    AboutTaskDescr(task, onComleteChange = { taskViewModel.completeTask(id) })
+
+    AboutTaskDescr(task,
+        onComleteChange = { taskViewModel.completeTask(id) },
+        onChangeDescription = { new_text -> taskViewModel.changeTaskDescrip(id, new_text)}
+        )
 }
 
 @Composable
-fun AboutTaskDescr(task:Task, onComleteChange: (Boolean)->Unit){
+fun AboutTaskDescr(task:Task, onComleteChange: (Boolean)->Unit, onChangeDescription: (String) -> Unit){
     var text_to_change by remember { mutableStateOf("") }
 
     Column(Modifier.fillMaxSize())
@@ -58,12 +61,10 @@ fun AboutTaskDescr(task:Task, onComleteChange: (Boolean)->Unit){
         }
         Button(modifier = Modifier.padding(vertical = 10.dp).padding(end=5.dp).align(Alignment.End),
             onClick = {
-
-
+                onChangeDescription(text_to_change)
             })
         {
             Text(text = "Изменить описание")
-
         }
         TextField(
             value = text_to_change,

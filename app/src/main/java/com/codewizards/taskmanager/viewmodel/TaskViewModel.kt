@@ -11,6 +11,7 @@ class TaskViewModel: ViewModel() {
     fun addTask(title:String, descript:String){
         _tasks.add(Task(_tasks.size, title,descript,false))
     }
+
     fun completeTask(id: Int){
         _tasks[id] = _tasks[id].copy(isComplete = !_tasks[id].isComplete)
     }
