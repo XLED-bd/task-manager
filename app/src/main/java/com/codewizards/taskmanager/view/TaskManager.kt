@@ -37,6 +37,7 @@ fun TaskManager(taskViewModel: TaskViewModel,  modifier: Modifier){
     val navController = rememberNavController()
 
     NavHost(navController = navController, startDestination = "main"){
+
         composable("main") {
             Column (modifier = modifier.fillMaxSize()) {
                 TextFieldTask(onAddTask = { title, descrip -> taskViewModel.addTask(title, descrip) })
@@ -114,9 +115,11 @@ fun TextFieldTask(onAddTask: (String, String) -> Unit){
         )
         Button(
             onClick = {
-                onAddTask(text_title, text_descp)
-                text_title = ""
-                text_descp = ""
+                if (text_title.isNotEmpty()){
+                    onAddTask(text_title, text_descp)
+                    text_title = ""
+                    text_descp = ""
+                }
             },
             modifier = Modifier.fillMaxWidth().padding(start = 20.dp, end = 20.dp))
         {
