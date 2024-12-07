@@ -2,9 +2,11 @@ package com.codewizards.taskmanager.view
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -27,10 +29,10 @@ fun AboutTask(id: Int, taskViewModel: TaskViewModel) {
 
 @Composable
 fun AboutTaskDescr(task:Task, onComleteChange: (Boolean)->Unit){
-    var text_title by remember { mutableStateOf("") }
-    var text_descp by remember { mutableStateOf("") }
+    var text_to_change by remember { mutableStateOf("") }
 
-    Column(Modifier.fillMaxSize()) {
+    Column(Modifier.fillMaxSize())
+    {
         Text(text = task.name,
             modifier = Modifier.padding(vertical = 10.dp).padding(start = 5.dp),
             fontSize = 20.sp)
@@ -47,11 +49,25 @@ fun AboutTaskDescr(task:Task, onComleteChange: (Boolean)->Unit){
             modifier = Modifier.padding(vertical = 10.dp).padding(end=5.dp).align(Alignment.End),
             onClick = {
                 onComleteChange(task.isComplete)
-                // isComplete = true
             })
         {
             Text(text = if (task.isComplete) "Выполнено" else "Не выполнено")
         }
+        Button(modifier = Modifier.padding(vertical = 10.dp).padding(end=5.dp).align(Alignment.End),
+            onClick = {
+
+
+            })
+        {
+            Text(text = "Изменить описание задания")
+            TextField(
+                value = text_to_change,
+                onValueChange = { text_to_change = it },
+                placeholder = { Text(text = "Изменить") },
+                modifier = Modifier.fillMaxWidth().padding(start = 20.dp, end = 20.dp)
+            )
+        }
+
     }
 }
 
