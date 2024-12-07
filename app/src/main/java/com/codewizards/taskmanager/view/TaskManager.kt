@@ -90,7 +90,6 @@ fun TaskItem(task: Task, onDetail: (Int) -> Unit) {
                     Text(text = "Удалить")
                 }
             }
-
         }
     }
 }

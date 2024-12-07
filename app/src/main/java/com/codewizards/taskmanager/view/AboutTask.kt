@@ -59,6 +59,7 @@ fun AboutTaskDescr(task:Task, onComleteChange: (Boolean)->Unit, onChangeDescript
         {
             Text(text = if (task.isComplete) "Выполнено" else "Не выполнено")
         }
+
         Button(modifier = Modifier.padding(vertical = 10.dp).padding(end=5.dp).align(Alignment.End),
             onClick = {
                 onChangeDescription(text_to_change)
@@ -66,6 +67,7 @@ fun AboutTaskDescr(task:Task, onComleteChange: (Boolean)->Unit, onChangeDescript
         {
             Text(text = "Изменить описание")
         }
+
         TextField(
             value = text_to_change,
             onValueChange = { text_to_change = it },
