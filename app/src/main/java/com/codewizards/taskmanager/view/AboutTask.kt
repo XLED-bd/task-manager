@@ -17,6 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.compose.rememberNavController
 import com.codewizards.taskmanager.model.Task
 import com.codewizards.taskmanager.viewmodel.TaskViewModel
 
@@ -59,15 +60,15 @@ fun AboutTaskDescr(task:Task, onComleteChange: (Boolean)->Unit){
 
             })
         {
-            Text(text = "Изменить описание задания")
-            TextField(
-                value = text_to_change,
-                onValueChange = { text_to_change = it },
-                placeholder = { Text(text = "Изменить") },
-                modifier = Modifier.fillMaxWidth().padding(start = 20.dp, end = 20.dp)
-            )
-        }
+            Text(text = "Изменить описание")
 
+        }
+        TextField(
+            value = text_to_change,
+            onValueChange = { text_to_change = it },
+            placeholder = { Text(text = "Изменить") },
+            modifier = Modifier.fillMaxWidth().padding(start = 20.dp, end = 20.dp)
+        )
     }
 }
 
