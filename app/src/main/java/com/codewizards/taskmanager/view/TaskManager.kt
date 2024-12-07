@@ -62,7 +62,8 @@ fun TaskList(taskViewModel: TaskViewModel, onClickDetail: (Int) -> Unit ) {
 
     LazyColumn {
         items(tasks){ task ->
-            TaskItem(task, onDetail = {taskId -> onClickDetail(taskId)})
+            TaskItem(task, onDetail = {taskId -> onClickDetail(taskId)},
+                onDelete = { })
         }
     }
 }
@@ -85,7 +86,9 @@ fun TaskItem(task: Task, onDetail: (Int) -> Unit) {
                 }
                 Button(
                     modifier = Modifier.padding(vertical = 10.dp).padding(end=5.dp).align(Alignment.End),
-                    onClick = { })
+                    onClick = {
+                        onDeleteTask(task.id)
+                    })
                 {
                     Text(text = "Удалить")
                 }
