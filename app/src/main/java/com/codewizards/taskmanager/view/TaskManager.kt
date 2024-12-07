@@ -45,7 +45,8 @@ fun TaskManager(taskViewModel: TaskViewModel,  modifier: Modifier){
                 TaskList(taskViewModel, onClickDetail = {
                     taskId ->
                     navController.navigate("task_detail/$taskId")
-                })
+                },
+                    /*   */ )
             }
         }
         composable("task_detail/{id}",
@@ -57,19 +58,19 @@ fun TaskManager(taskViewModel: TaskViewModel,  modifier: Modifier){
 }
 
 @Composable
-fun TaskList(taskViewModel: TaskViewModel, onClickDetail: (Int) -> Unit ) {
+fun TaskList(taskViewModel: TaskViewModel, onClickDetail: (Int) -> Unit, /*   */) {
     val tasks = taskViewModel.tasks
 
     LazyColumn {
         items(tasks){ task ->
             TaskItem(task, onDetail = {taskId -> onClickDetail(taskId)},
-                onDelete = { })
+                onDelete = { /*   */ })
         }
     }
 }
 
 @Composable
-fun TaskItem(task: Task, onDetail: (Int) -> Unit) {
+fun TaskItem(task: Task, onDetail: (Int) -> Unit, /*   */) {
     Card (
         Modifier.fillMaxWidth(). padding(horizontal = 20.dp, vertical = 7.dp))
     {

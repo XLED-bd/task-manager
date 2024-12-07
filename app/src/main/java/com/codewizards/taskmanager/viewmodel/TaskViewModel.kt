@@ -13,7 +13,7 @@ class TaskViewModel: ViewModel() {
     }
 
     fun deleteTask(id:Int){
-        _tasks[id] = _tasks[id].copy(id = id)
+        _tasks.removeAt(id)
     }
 
     fun completeTask(id: Int){
