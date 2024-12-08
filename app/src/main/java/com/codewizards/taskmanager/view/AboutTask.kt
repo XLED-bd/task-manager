@@ -1,11 +1,17 @@
 package com.codewizards.taskmanager.view
 
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.systemBars
+import androidx.compose.foundation.layout.windowInsetsPadding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -19,26 +25,30 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.view.WindowCompat
 import androidx.navigation.compose.rememberNavController
 import com.codewizards.taskmanager.model.Task
 import com.codewizards.taskmanager.viewmodel.TaskViewModel
 
 @Composable
 fun AboutTask(id: Int, taskViewModel: TaskViewModel) {
+
     val task = taskViewModel.tasks[id]
 
     AboutTaskDescr(task,
         onComleteChange = { taskViewModel.completeTask(id) },
-        onChangeDescription = { new_text -> taskViewModel.changeTaskDescrip(id, new_text)}
-        )
+        onChangeDescription = { new_text -> taskViewModel.changeTaskDescrip(id, new_text)})
 }
 
 @Composable
 fun AboutTaskDescr(task:Task, onComleteChange: (Boolean)->Unit, onChangeDescription: (String) -> Unit){
     var text_to_change by remember { mutableStateOf("") }
 
-    Column(Modifier.fillMaxSize())
+    Column(Modifier.fillMaxSize()
+        .windowInsetsPadding(WindowInsets.systemBars)
+        .verticalScroll(rememberScrollState()))
     {
+
         Text(text = task.name,
             modifier = Modifier.padding(vertical = 10.dp).padding(start = 5.dp),
             fontSize = 20.sp)
